@@ -1,0 +1,37 @@
+plugins {
+	id 'org.springframework.boot' version '2.1.8.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+	id 'java'
+}
+
+group = 'com.gedois'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	// basic dependencies form the app
+	compile group: 'org.camunda.bpm.springboot', name: 'camunda-bpm-spring-boot-starter-webapp', version: '3.3.4'
+	implementation 'com.h2database:h2'
+
+
+    ///////////
+    compile group: 'org.camunda.bpm', name: 'camunda-engine-plugin-spin', version: '7.11.0'
+	compile group: 'org.camunda.spin', name: 'camunda-spin-dataformat-json-jackson', version: '1.7.1'
+
+	compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'org.camunda.spin:camunda-spin-bom:1.7.1'
+	implementation 'org.camunda.spin:camunda-spin-dataformat-all:1.7.1'
+
+}
